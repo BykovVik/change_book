@@ -1,0 +1,40 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.decor {
+    background-image: url('./assets/button.png');
+    background-color: rgba(0, 0, 0, 0);
+    background-size: cover;
+}
+
+.coin-container {
+    display: flex;
+}
+.coin {
+    width: 33%;
+    transition: transform 0.5s ease;
+}
+.animate {
+    animation: flip 0.5s infinite; /* Применяем анимацию "flip" */
+}
+@keyframes flip {
+    0% { transform: rotateY(0deg); }
+    50% { transform: rotateY(180deg); }
+    100% { transform: rotateY(0deg); }
+}
+.line {
+    width: 80%;
+}
+.block-margin-bottom {
+    margin-bottom: 20px;
+}
+.result {
+    text-align: left;
+}
+.save {
+    background-color:darkcyan;
+    margin-right: 5px;
+}
