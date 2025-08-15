@@ -4,12 +4,6 @@
   padding: 2rem;
   text-align: center;
 }
-.decor {
-    background-image: url('./assets/button.png');
-    background-color: rgba(0, 0, 0, 0);
-    background-size: cover;
-}
-
 .coin-container {
     display: flex;
 }
@@ -33,6 +27,7 @@
 }
 .result {
     text-align: left;
+    color: #4B3B2A;
 }
 .save {
     background-color:darkcyan;

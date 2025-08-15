@@ -84,20 +84,20 @@ function Game() {
         <div className="game-container">
             <div className="lines-container block-margin-bottom">
                 {lines.map((lineType, index) => (
-                    <img key={index} src={`/src/assets/${lineType}.png`} alt="Линия" className="line" />
+                    <img key={index} src={`./assets/${lineType}.png`} alt="Линия" className="line" />
                 ))}
             </div>
             {!isGameFinished ? (
             <div className="coin-container block-margin-bottom">
                 {isAnimating ? (
                     <>
-                        <img src="/src/assets/coin_p.png" alt="Монета" className="coin animate" />
-                        <img src="/src/assets/coin_p.png" alt="Монета" className="coin animate" />
-                        <img src="/src/assets/coin_p.png" alt="Монета" className="coin animate" />
+                        <img src="./assets/coin_p.png" alt="Монета" className="coin animate" />
+                        <img src="./assets/coin_p.png" alt="Монета" className="coin animate" />
+                        <img src="./assets/coin_p.png" alt="Монета" className="coin animate" />
                     </>
                 ) : (
                     currentResults.map((result, index) => (
-                        <img key={index} src={`/src/assets/${result}.png`} alt="Монета" className="coin" />
+                        <img key={index} src={`./assets/${result}.png`} alt="Монета" className="coin" />
                     ))
                 )}
             </div>

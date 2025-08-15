@@ -28,7 +28,7 @@ function Home() {
         }
         {orientation === 'portrait'&&
         <div>
-            <img src="/src/assets/injan.png" className="logo"/>
+            <img src="./assets/injan.png" className="logo"/>
             <h1>Книга перемен</h1>
             <p>Откройте мудрость древности. <br/>Задайте вопрос и получите совет И Цзин</p>
             <button onClick={startGame}>НАЧАТЬ ГАДАНИЕ</button>

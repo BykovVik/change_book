@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Chine';
-    src: url('./assets/fonts/Takashimura.otf') format('opentype');
+    src: url('./fonts/Takashimura.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -19,7 +19,7 @@ body {
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-    background-image: url("./assets/background.png");
+    background-image: url("./background.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
