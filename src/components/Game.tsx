@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import data from "../data/data.json";
 import { useNavigate } from "react-router-dom";
 import OrientationDetector from "./OrientationDirect"
@@ -14,6 +14,7 @@ function Game() {
     const [isGameFinished, setIsGameFinished] = useState<boolean>(false); 
     const [resultMessage, setResultMessage] = useState<string | null>(null); 
     const navigate = useNavigate()
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
     const [orientation, setOrientation] = useState<'portrait' | 'landscape'>(
         window.innerWidth > window.innerHeight ? 'landscape' : 'portrait'
@@ -24,10 +25,17 @@ function Game() {
     };
 
     const throwCoins = () => {
+        if (audioRef.current) {
+                audioRef.current.currentTime = 0;
+                audioRef.current.play().catch(error => {
+                    console.log("Ошибка воспроизведения звука: 2 ", error);
+            });
+        }
         setIsAnimating(true);
         setCurrentResults(['coin_p', 'coin_p', 'coin_p']); 
 
         setTimeout(() => {
+
             const results = Array.from({ length: 3 }, () => Math.random() < 0.5 ? 'coin_o' : 'coin_p');
             const headsCount = results.filter(result => result === 'coin_o').length;
             const tailsCount = results.filter(result => result === 'coin_p').length;
@@ -75,6 +83,10 @@ function Game() {
     return (
         <>
         <OrientationDetector onOrientationChange={handleOrientationChange} />
+        <audio ref={audioRef}>
+            <source src="./audio/moneta.mp3" type="audio/mpeg" />
+            Ваш браузер не поддерживает аудио.
+        </audio>
         {orientation === 'landscape'&&
             <div className="landscapeDisplay">
                 <h3>Приложение работает исключительно в портретном режиме</h3>
@@ -110,7 +122,13 @@ function Game() {
                     <button onClick={getStart}>ЗАНОВО</button>
                 </>
             ) : (
-                <button onClick={throwCoins}>БРОСИТЬ МОНЕТЫ</button>
+                <>
+                {isAnimating ? (
+                    <button className="deactivate">БРОСИТЬ МОНЕТЫ</button>
+                ) : (
+                    <button onClick={throwCoins}>БРОСИТЬ МОНЕТЫ</button>
+                )}
+                </>
             )}
         </div>
         }
